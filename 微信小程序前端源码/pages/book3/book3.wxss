@@ -1,0 +1,18 @@
+/* test.wxss */
+.question{
+  text-align:center;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction:  column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50rpx 0;
+  box-sizing: border-box;
+} 
+
+.btn-end {
+  margin-top:20rpx;
+}

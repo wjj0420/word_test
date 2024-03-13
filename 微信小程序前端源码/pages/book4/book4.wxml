@@ -1,0 +1,16 @@
+<!--test.wxml-->
+<view class="container">
+  <text>\n</text> 
+  <text class="question">"{{text[index].english}}"这个单词的意思是：</text>
+  <text>\n\n\n</text> 
+  <button bindtap="select1" type="primary">A:{{text[cnindex0].chinese}}</button>
+  <text>\n</text> 
+  <button bindtap="select2" type="primary">B:{{text[cnindex1].chinese}}</button>
+  <text>\n</text> 
+  <button bindtap="select3" type="primary">C:{{text[cnindex2].chinese}}</button>
+  <text>\n</text> 
+  <button bindtap="select4" type="primary">D:{{text[cnindex3].chinese}}</button>
+  <text>\n</text> 
+  <text  >目前你答对了{{rightNum}}个,答错了{{wrongNum}}个\n</text>
+  <button bindtap="select_over" class="btn-end">结束测试</button>
+</view>

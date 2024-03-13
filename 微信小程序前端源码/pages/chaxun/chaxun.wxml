@@ -1,0 +1,16 @@
+<!--pages/chaxun/chaxun.wxml-->
+<view class="container">
+  <view class="time">{{time}}\n\n</view>
+  <input class="input" name="ID" placeholder="请输入您的学号"
+    bindinput ="IDInput"/>
+  <text>\n</text>
+  <button bindtap="request" type="primary" class="btn-query"> 查询 </button>
+  <view class="result">
+    <view>仅显示近期五次使用情况\n</view>
+    <text decode="{{true}}"> {{textdata}} </text>
+    <rich-text nodes="{{result}}"></rich-text>
+  </view>
+  <!-- <view>
+      <textarea align-items: center fixed="true" maxlength="500" value="{{textdata}}"/> 
+  </view> -->
+</view>

@@ -1,0 +1,28 @@
+/* pages/chaxun/chaxun.wxss */
+.container {
+  margin:0 40rpx;
+}
+
+.time {
+  text-align: left;
+}
+
+.input {
+  margin-top:20rpx;
+}
+
+.btn-query {
+  width:500rpx;
+}
+
+.result {
+  margin-top:40rpx;
+}
+
+.result-item {
+  margin-top:20rpx;
+}
+
+.result-table {
+  margin-top:40rpx;
+}

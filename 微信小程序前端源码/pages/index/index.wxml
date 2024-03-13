@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class="container">
+  <view  bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="/img/1.jpg" background-size="cover"></image>
+    <view class="userinfo-nickname">北邮英语学习互动平台</view>
+  </view>
+  <scroll-view class="scroll" scroll-x bindscroll="changeBook">
+    <view class="scroll-item" wx:for="{{book}}" wx:key="{{index}}" >
+      <image  src="{{item.src}}" class="si-img {{index==nowBook?'si-img-select':''}}" ></image>
+      <view class="si-content" wx:if="{{index==nowBook}}">{{item.content}}</view>
+      <view class="si-ready" wx:if="{{index==nowBook}}" bindtap="selectBook">确定</view>
+    </view>
+  </scroll-view>
+</view>

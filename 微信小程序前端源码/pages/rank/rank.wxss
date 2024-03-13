@@ -1,0 +1,43 @@
+/* pages/rank/rank.wxss */
+.container {
+  margin:0 40rpx;
+}
+
+.g-title {
+  text-align: center
+}
+
+.g-content {
+  margin-top:40rpx;
+}
+.gc-item {
+  overflow:hidden;
+  opacity:0;
+}
+.gc-item.gc-head {
+  opacity:1;
+}
+/*标题*/
+.gc-head {
+  font-size:22rpx;
+  color:red;
+  margin-bottom: 40rpx;
+}
+/*普通的表项*/
+.item {
+  float:left;
+  margin-right:40rpx;
+  margin-top:20rpx;
+}
+.item-id {
+  width:250rpx;
+}
+.item-order {
+  width:44rpx;
+}
+.item-grade {
+  width:66rpx;
+}
+.item-tpre {
+  width:132rpx;
+}

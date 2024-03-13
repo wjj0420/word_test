@@ -1,0 +1,66 @@
+/**index.wxss**/
+.container {
+  margin:0 40rpx;
+}
+
+.userinfo {
+  margin-top:200rpx;
+}
+
+.userinfo-avatar {
+  display: block;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx auto;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+  padding-top:20rpx;
+  text-align: center;
+}
+
+.scroll {
+  height:900rpx;
+  white-space:nowrap;
+  margin-top:40rpx;
+}
+
+.scroll-item {
+  display:inline-block;
+  padding-right:40rpx;
+  vertical-align: top;
+  overflow: hidden;
+  position:relative;
+}
+
+.si-img {
+  height:566rpx;
+  width:396rpx;
+  padding-top:70rpx;
+  transition:all 1s;
+}
+.si-img-select {
+  height:706rpx;
+  width:496rpx;
+  padding-top:0;
+}
+
+.si-content {
+  text-align: center;
+  padding-top:20rpx;
+}
+
+.si-ready {
+  position:absolute;
+  height:100rpx;
+  width:100rpx;
+  left:198rpx;
+  top:553rpx;
+  background:green;
+  border-radius: 50rpx;
+  color:#000;
+  line-height: 100rpx;
+  text-align: center;
+}
