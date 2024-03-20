@@ -1,0 +1,10 @@
+/**study.wxss**/
+.container {
+  margin:40 40rpx;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+  padding-top:20rpx;
+  text-align: center;
+}

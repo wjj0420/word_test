@@ -11,8 +11,8 @@
     "pages/choose/choose",
     "pages/endPage/endPage",
     "pages/chaxun/chaxun",
-    "pages/rank/rank"
-    
+    "pages/rank/rank",
+    "pages/study/study"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -36,6 +36,12 @@
         "selectedIconPath": "img/test_s.png"
       },
       {
+        "pagePath": "pages/study/study",
+        "text": "学习",
+        "iconPath": "img/study.png",
+        "selectedIconPath": "img/study_s.png"
+      },
+      {
         "pagePath": "pages/chaxun/chaxun",
         "text": "历史",
         "iconPath": "img/query.png",
@@ -47,6 +53,7 @@
         "iconPath": "img/rank.png",
         "selectedIconPath": "img/rank_s.png"
       }
+     
     ]
   }
 }

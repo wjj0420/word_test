@@ -3,6 +3,7 @@
   <view  bindtap="bindViewTap" class="userinfo">
     <image class="userinfo-avatar" src="/img/1.jpg" background-size="cover"></image>
     <view class="userinfo-nickname">北邮英语学习互动平台</view>
+    
   </view>
   <scroll-view class="scroll" scroll-x bindscroll="changeBook">
     <view class="scroll-item" wx:for="{{book}}" wx:key="{{index}}" >
