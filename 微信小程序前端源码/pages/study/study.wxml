@@ -1,4 +1,2 @@
-<view class="container">
-  <view class="userinfo-nickname">好好学习</view>
-
-</view>
+<!--pages/study/study.wxml-->
+<text>pages/study/study.wxml</text>

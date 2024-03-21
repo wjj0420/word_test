@@ -12,7 +12,8 @@
     "pages/endPage/endPage",
     "pages/chaxun/chaxun",
     "pages/rank/rank",
-    "pages/study/study"
+    "pages/study/study",
+    "pages/study_choose/study_choose"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -36,7 +37,7 @@
         "selectedIconPath": "img/test_s.png"
       },
       {
-        "pagePath": "pages/study/study",
+        "pagePath": "pages/study_choose/study_choose",
         "text": "学习",
         "iconPath": "img/study.png",
         "selectedIconPath": "img/study_s.png"
