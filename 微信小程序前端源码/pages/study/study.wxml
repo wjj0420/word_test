@@ -1,2 +1,14 @@
 <!--pages/study/study.wxml-->
-<text>pages/study/study.wxml</text>
+<view>
+  <text>\n</text> 
+  <text class="question">"{{text[index].english}}"\n这个单词的意思是：{{text[index].chinese}}"</text>
+  <image  src="{{text[index].image}}" background-size="cover"></image>
+  <view class="play_button" bindtap="playAudio">
+  <image class="play_icon" src="/img/play_icon.png"></image>
+</view>
+<button class="primary" bindtap="previous">上一个</button>
+<button class="primary" bindtap="next">下一个</button>
+</view>
+
+
+

@@ -1,66 +1,61 @@
 // pages/study/study.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    isPlaying: false,
+    index:0,
+    text: [
+      {
+        english: "style",
+        chinese: " n.行为方式,风格 ",
+        image:"/img/style.jpg"
+      },
+     {
+        english: "off and on",
+        chinese: "断断续续地，有时",
+        image:"/img/off and on.jpg"
+      },
+      {
+        english: "take hold",
+        chinese: "生根，确立",
+        image:"/img/take hold.jpg"
+      },
+      {
+        english: "associate",
+        chinese: "使联系起来，使联想",
+        image:"/img/associate.jpg"
+      }]
+  },
+  playAudio: function() {
+    if (!this.data.isPlaying) {
+      // 播放语音逻辑
+      console.log('开始播放语音');
+      // 更新按钮状态
+      this.setData({
+        isPlaying: true
+      });
+    } else {
+      // 暂停语音逻辑
+      console.log('暂停播放语音');
+      // 更新按钮状态
+      this.setData({
+        isPlaying: false
+      });
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  previous(){
+    let index = this.data.index;
+      this.setData({
+        index:index-1
+      });
+    
+  },
+  next(){
+    let index = this.data.index;
+      this.setData({
+        index:index+1
+      });
+    
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })

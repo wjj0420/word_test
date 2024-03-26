@@ -1,0 +1,18 @@
+.question{
+  text-align:center;
+}
+.play_button {
+ 
+  border-radius: 50%;
+  background-color:rgb(253, 253, 253);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.play_icon {
+  width: 40px;
+  height: 40px;
+  color: rgb(255, 248, 220);
+}
