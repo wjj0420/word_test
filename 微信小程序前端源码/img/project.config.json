@@ -1,26 +1,26 @@
 {
-  "description": "项目配置文件。",
+  "appid": "wx8862a4eac69ee175",
+  "compileType": "miniprogram",
+  "libVersion": "3.3.5",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
   "setting": {
-    "urlCheck": true,
+    "coverView": true,
     "es6": true,
     "postcss": true,
     "minified": true,
-    "newFeature": true,
+    "enhance": true,
+    "showShadowRootInWxmlPanel": true,
+    "packNpmRelationList": [],
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     }
   },
-  "compileType": "miniprogram",
-  "libVersion": "3.3.4",
-  "appid": "wx8862a4eac69ee175",
-  "projectname": "english",
   "condition": {},
-  "packOptions": {
-    "ignore": [],
-    "include": []
-  },
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2

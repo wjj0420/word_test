@@ -11,8 +11,8 @@
     "pages/choose/choose",
     "pages/endPage/endPage",
     "pages/chaxun/chaxun",
-    "pages/rank/rank"
-    
+    "pages/rank/rank",
+    "pages/learn/learn"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -46,6 +46,12 @@
         "text": "排行",
         "iconPath": "img/rank.png",
         "selectedIconPath": "img/rank_s.png"
+      },
+      {
+        "pagePath": "pages/learn/learn",
+        "text": "学习",
+        "iconPath": "img/learn.png",
+        "selectedIconPath": "img/learn.png"
       }
     ]
   }

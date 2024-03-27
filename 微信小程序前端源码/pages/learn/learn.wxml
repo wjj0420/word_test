@@ -1,0 +1,16 @@
+<!--yemian.wxml-->
+<view class="container">
+  <text class="question">"{{text[index].chinese}}""{{index}}"这个单词的英文是：</text>
+  <button bindtap="select1" type="primary">{{cnindex0}}A:{{text[cnindex0].english}}</button>
+  <text>\n</text> 
+  <button bindtap="select2" type="primary">{{cnindex1}}B:{{text[cnindex1].english}}</button>
+  <text>\n</text> 
+  <button bindtap="select3" type="primary">{{cnindex2}}C:{{text[cnindex2].english}}</button>
+  <text>\n</text> 
+  <button bindtap="select4" type="primary">{{cnindex3}}D:{{text[cnindex3].english}}</button>
+  <text>\n</text> 
+  <button bindtap="adddata" type="primary">按键添加</button>
+  <text>\n</text> 
+  <button bindtap="getdata" type="primary">按键查询</button>
+ <view wx:for="{{dataobj}}"><view>{{item.english}}</view></view>
+</view>

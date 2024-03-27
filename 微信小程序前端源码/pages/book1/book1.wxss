@@ -16,3 +16,8 @@
 .btn-end {
   margin-top:20rpx;
 }
+.img {
+  height:300rpx;
+  width:500rpx;
+
+}

@@ -2,6 +2,7 @@
 <view class="container">
   <text >{{bookNum}}</text>
   <text class="question">"{{text[index].english}}"这个单词的意思是：</text>
+  <image  src="../../img/book_1.jpg"></image>
   <button bindtap="select1" type="primary">A:{{text[cnindex0].chinese}}</button>
   <text>\n</text> 
   <button bindtap="select2" type="primary">B:{{text[cnindex1].chinese}}</button>

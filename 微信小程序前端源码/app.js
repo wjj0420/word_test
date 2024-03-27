@@ -6,6 +6,11 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     console.log(getCurrentPages())
+    wx.cloud.init({
+     
+      traceUser: true,
+      env:"cloud1-5gqmave5af945767",
+  })
     wx.login({
       success:function(res){
         wx.getUserInfo({

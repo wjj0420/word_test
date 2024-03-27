@@ -20,71 +20,90 @@ Page({
     text: [
       {
         english: "style",
-        chinese: " n.行为方式,风格 "
+        chinese: " n.行为方式,风格 ",
+        src:"../../img/book_1.jpg",
       }],
     text1: [ {
         english: "off and on",
-        chinese: "断断续续地，有时"
+        chinese: "断断续续地，有时",
+        src:"../../img/unit1/offandon.jpg"
       },
       {
         english: "take hold",
-        chinese: "生根，确立"
+        chinese: "生根，确立",
+        src:"../../img/unit1/takehold.jpg"
+
       },
       {
         english: "associate",
-        chinese: "使联系起来，使联想"
+        chinese: "使联系起来，使联想",
+        src:"../../img/unit1/associate.jpg"
+
       },
       {
         english: "assignment",
-        chinese: "（分配的）工作，任务，作业"
+        chinese: "（分配的）工作，任务，作业",
+        src:"../../img/unit1/assignment.jpg"
       },
       {
         english: "turn out",
-        chinese: "编写，制作"
+        chinese: "编写，制作",
+        src:"../../img/unit1/turnout.jpg"
       },
       {
         english: "paragraph ",
-        chinese: "段落"
+        chinese: "段落",
+        src:"../../img/unit1/paragraph.jpg"
       },
       {
         english: "agony",
-        chinese: "(身心的)极度痛苦"
+        chinese: "(身心的)极度痛苦",
+        src:"../../img/unit1/agony.jpg"
       },
       {
         english: "assign",
-        chinese: "分配，分派"
+        chinese: "分配，分派",
+        src:"../../img/unit1/assign.jpg"
       },
       {
         english: "cheerless",
-        chinese: "阴郁的，沉闷的"
+        chinese: "阴郁的，沉闷的",
+        src:"../../img/unit1/cheerless.jpg"
       },
       {
         english: "tedious",
-        chinese: "乏味的，冗长的"
+        chinese: "乏味的，冗长的",
+        src:"../../img/unit1/tedious.jpg"
       },
       {
         english: "reputation",
-        chinese: "名声，名誉"
+        chinese: "名声，名誉",
+        src:"../../img/unit1/reputation.jpg"
       },
       {
         english: "inability",
-        chinese: "无能，无力"
+        chinese: "无能，无力",
+        src:"../../img/unit1/inability.jpg"
       },
       {
         english: "inspire",
-        chinese: "激励，鼓舞"
+        chinese: "激励，鼓舞",
+        src:"../../img/unit1/inspire.jpg"
       },
       {
         english: "formal",
-        chinese: "刻板的，拘谨的，正式的，正规的"
+        chinese: "刻板的，拘谨的，正式的，正规的",
+        src:"../../img/unit1/formal.jpg"
       },
       {
         english: "rigid",
-        chinese: "一成不变的，严格的"
+        chinese: "一成不变的，严格的",
+        src:"../../img/unit1/rigid.jpg"
       },
       {
         english: "out of date",
-        chinese: "过时的"
+        chinese: "过时的",
+        src:"../../img/unit1/outofdate.png"
       },
       {
         english: "excessively",
@@ -168,7 +187,8 @@ Page({
       },
       {
         english: "image",
-        chinese: "形象，印象，（图）像"
+        chinese: "形象，印象，（图）像",
+        src:"../../img/book_1.jpg",
       },
       {
         english: "vivid",
@@ -209,6 +229,7 @@ Page({
       {
         english: "compose",
         chinese: "创作"
+
       },
       {
         english: "turn in",

@@ -1,7 +1,7 @@
 <!--test.wxml-->
 <view class="container">
   <view class="question">"{{text[index].english}}"这个单词的意思是：</view>
-  <text>\n\n\n</text>
+  <image  src="{{text[index].src}}" mode="aspectFit" class="img"></image>
   <button bindtap="select1" type="primary">A:{{text[cnindex0].chinese}}</button>
   <text>\n</text> 
   <button bindtap="select2" type="primary">B:{{text[cnindex1].chinese}}</button>
