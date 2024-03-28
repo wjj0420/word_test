@@ -1831,7 +1831,7 @@ Page({
     console.log('yes')
     console.log(this.data)
     let that =this
-    console.log("that",that.data.text[that.data.index])
+    console.log("that",that.data.text[that.data.index].english)
     db.collection('words').add({
       
       data: {
@@ -1864,8 +1864,15 @@ Page({
   },
 
   checkYES: function () {
-    wx.redirectTo({
-      url: '../test/test',
+    this.changeText();
+    var rightNum = getApp().globalData.rightNum;
+    rightNum = rightNum + 1;
+    getApp().globalData.rightNum = rightNum;
+    this.setData({
+      rightNum: getApp().globalData.rightNum
+    })
+    this.setData({
+      wrongNum: getApp().globalData.wrongNum
     })
   },
   checkNO: function () {

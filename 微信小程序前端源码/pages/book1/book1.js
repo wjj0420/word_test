@@ -1,5 +1,5 @@
 // test.js
-
+const db=wx.cloud.database()
 Page({
 
   /**
@@ -17,6 +17,7 @@ Page({
     cnindex1: 1,
     cnindex2: 1,
     cnindex3: 1,
+    
     text: [
       {
         english: "style",
@@ -2222,15 +2223,19 @@ Page({
 
   },
   changeText: function () {
+    console.log("yes")
     // this.data.text = 'changed data'  // bad, it can not work
     var wordArray = new Array(this.data.num)
       .fill(0)
       .map((v, i) => i + 1)
       .sort(() => 0.5 - Math.random())
       .filter((v, i) => i < 5);
+      console.log("beforebefore",this.data)
+      
     this.setData({
       index: wordArray[0]
     }),
+   
       this.setData({
         answer: ((Math.ceil((Math.random() * 100) * 100)) % 4)
       }),
@@ -2245,6 +2250,28 @@ Page({
       }),
       this.setData({
         cnindex3: 3 == this.data.answer ? this.data.index : wordArray[4]
+      })
+      let that =this
+    
+      console.log("is that before",that.data.text[that.data.index])
+      //console.log("is this",that.data.text[that.data.index].english)
+      console.log("is this after",that.data.text[that.data.index])
+      db.collection('words').add({
+        
+        data: {
+          //english: that.data.text[that.data.index].english,
+          //chinese: that.data.text[that.data.index].chinese,
+          num:that.data.index,
+         // src: that.data.text[that.data.index].src,
+          right:0,
+          wrong:0
+        },
+        success: function(res) {  
+          console.log("yesssss")
+          console.log("this is index",this.data.text[that.data.index])
+          console.log("this is ",this.data.text[that.data.index])
+        }
+        
       })
   },
   checkYES: function () {

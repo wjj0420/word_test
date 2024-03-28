@@ -9,7 +9,7 @@ App({
     wx.cloud.init({
      
       traceUser: true,
-      env:"cloud1-5gqmave5af945767",
+      env:"cloud1-4gwgratj4ffb4d67",
   })
     wx.login({
       success:function(res){

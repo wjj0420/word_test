@@ -1,6 +1,6 @@
 <!--test.wxml-->
 <view class="container">
-  <view class="question">"{{text[index].english}}"这个单词的意思是：</view>
+  <view class="question">"{{index}}""{{text[index].english}}"这个单词的意思是：</view>
   <image  src="{{text[index].src}}" mode="aspectFit" class="img"></image>
   <button bindtap="select1" type="primary">A:{{text[cnindex0].chinese}}</button>
   <text>\n</text> 
