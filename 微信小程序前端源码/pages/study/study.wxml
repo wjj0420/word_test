@@ -1,8 +1,8 @@
 <!--pages/study/study.wxml-->
 <view>
   <text>\n</text> 
-  <text class="question">"{{text[index].english}}"\n这个单词的意思是：{{text[index].chinese}}"</text>
-  <image  src="{{text[index].image}}" background-size="cover"></image>
+  <text class="question">"{{WordList[imageIndex].english}}"\n这个单词的意思是：{{WordList[imageIndex].chinese}}"</text>
+  <image  src="{{imageUrl}}" background-size="cover"></image>
   <view class="play_button" bindtap="playAudio">
   <image class="play_icon" src="/img/play_icon.png"></image>
 </view>
