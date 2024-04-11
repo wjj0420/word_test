@@ -1,6 +1,6 @@
 <!--test.wxml-->
 <view class="container">
-  <view class="question">"{{text[index].english}}"这个单词的意思是：</view>
+  <view class="question">"{{text[RandomArray[index]].english}}"这个单词的意思是：</view>
   <text>\n\n\n</text>
   <button bindtap="select1" type="primary">A:{{text[cnindex0].chinese}}</button>
   <text>\n</text> 

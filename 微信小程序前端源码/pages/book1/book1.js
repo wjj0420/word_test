@@ -9,7 +9,8 @@ Page({
 
   data: {
     num: 0,
-    index: 1,
+    index: 0,
+    RandomArray:[],
     answer: 1,
     rightNum: -1,
     wrongNum: -1,
@@ -2094,7 +2095,8 @@ Page({
     }
     return 0;
   },
-
+  
+//获取测试组库text和测试词库的数量num
   getIndex: function () {
     var num = 0;
     var index = getApp().globalData.bookUnit;
@@ -2200,39 +2202,53 @@ Page({
     }
 
   },
-  changeText: function () {
-    // this.data.text = 'changed data'  // bad, it can not work
+
+  //产生随机索引序列RandomArray(全局变量)
+  RandomGenerate:function (){
     var wordArray = new Array(this.data.num)
       .fill(0)
-      .map((v, i) => i + 1)
-      .sort(() => 0.5 - Math.random())
-      .filter((v, i) => i < 5);
-    this.setData({
-      index: wordArray[0]
-    }),
+      .map((v, i) => i )
+      .sort(() => (0.5 - Math.random()));
       this.setData({
-        answer: ((Math.ceil((Math.random() * 100) * 100)) % 4)
-      }),
-      this.setData({
-        cnindex0: 0 == this.data.answer ? this.data.index : wordArray[1]
-      }),
-      this.setData({
-        cnindex1: 1 == this.data.answer ? this.data.index : wordArray[2]
-      }),
-      this.setData({
-        cnindex2: 2 == this.data.answer ? this.data.index : wordArray[3]
-      }),
-      this.setData({
-        cnindex3: 3 == this.data.answer ? this.data.index : wordArray[4]
-      })
+        RandomArray:wordArray
+      });
   },
+
+  //页面渲染（包括初始化和每一次选对后）
+  changeText: function () {
+    //console.log(index),
+    let wordArray=this.data.RandomArray.slice()
+      this.setData({
+        answer: Math.floor(Math.random() * 4)
+      }),
+      wordArray.filter((v,i)=>v !=this.data.RandomArray[this.data.index]);//排除答案的索引序列
+      wordArray.sort(() => (0.5 - Math.random()))
+      .filter((v,i)=>i<4)
+      console.log("答案所在选项：",this.data.answer)
+      this.setData({
+        cnindex0: 0 == this.data.answer ? this.data.RandomArray[this.data.index] : wordArray[0]
+      }),
+      this.setData({
+        cnindex1: 1 == this.data.answer ? this.data.RandomArray[this.data.index] : wordArray[1]
+      }),
+      this.setData({
+        cnindex2: 2 == this.data.answer ? this.data.RandomArray[this.data.index] : wordArray[2]
+      }),
+      this.setData({
+        cnindex3: 3 == this.data.answer ? this.data.RandomArray[this.data.index] : wordArray[3]
+      })
+      console.log(this.data.RandomArray[this.data.index],"index:",this.data.index)
+      console.log("题目：",this.data.RandomArray[this.data.index],"答案:",this.data.RandomArray[this.data.index])
+  },
+
   checkYES: function () {
     this.changeText();
     var rightNum = getApp().globalData.rightNum;
     rightNum = rightNum + 1;
     getApp().globalData.rightNum = rightNum;
     this.setData({
-      rightNum: getApp().globalData.rightNum
+      rightNum: getApp().globalData.rightNum,
+      index:this.data.index+1
     })
     this.setData({
       wrongNum: getApp().globalData.wrongNum
@@ -2252,6 +2268,7 @@ Page({
         }
       }
     })
+    
     var wrongNum = getApp().globalData.wrongNum;
     wrongNum = wrongNum + 1;
     getApp().globalData.wrongNum = wrongNum;
@@ -2267,8 +2284,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.changeText();
+    
     this.getIndex();
+    this.RandomGenerate();
     this.changeText();
     this.setData({
       rightNum: getApp().globalData.rightNum

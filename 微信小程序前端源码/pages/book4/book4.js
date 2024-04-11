@@ -2064,11 +2064,12 @@ Page({
   },
   changeText: function () {
     // this.data.text = 'changed data'  // bad, it can not work
+
+    //创建随机单词表
     var wordArray = new Array(this.data.num)
       .fill(0)
       .map((v, i) => i + 1)
-      .sort(() => 0.5 - Math.random())
-      .filter((v, i) => i < 5);
+      .sort(() => 0.5 - Math.random());
     this.setData({
       index: wordArray[0]
     }),
@@ -2086,7 +2087,8 @@ Page({
       }),
       this.setData({
         cnindex3: 3 == this.data.answer ? this.data.index : wordArray[4]
-      })
+      }),
+      console.log(wordArray.slice(0,20))
   },
   checkYES: function () {
     this.changeText();
