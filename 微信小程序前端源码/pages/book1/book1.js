@@ -2218,6 +2218,7 @@ Page({
   changeText: function () {
     //console.log(index),
     let wordArray=this.data.RandomArray.slice()
+    console.log(wordArray)
       this.setData({
         answer: Math.floor(Math.random() * 4)
       }),
@@ -2242,13 +2243,16 @@ Page({
   },
 
   checkYES: function () {
+    this.setData({
+      index:this.data.index+1
+    })
+    console.log("index in checkyes:",this.data.index)
     this.changeText();
     var rightNum = getApp().globalData.rightNum;
     rightNum = rightNum + 1;
     getApp().globalData.rightNum = rightNum;
     this.setData({
       rightNum: getApp().globalData.rightNum,
-      index:this.data.index+1
     })
     this.setData({
       wrongNum: getApp().globalData.wrongNum
