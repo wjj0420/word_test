@@ -2218,7 +2218,6 @@ Page({
   changeText: function () {
     //console.log(index),
     let wordArray=this.data.RandomArray.slice()
-    console.log(wordArray)
       this.setData({
         answer: Math.floor(Math.random() * 4)
       }),
@@ -2238,15 +2237,18 @@ Page({
       this.setData({
         cnindex3: 3 == this.data.answer ? this.data.RandomArray[this.data.index] : wordArray[3]
       })
-      console.log(this.data.RandomArray[this.data.index],"index:",this.data.index)
-      console.log("题目：",this.data.RandomArray[this.data.index],"答案:",this.data.RandomArray[this.data.index])
   },
 
   checkYES: function () {
     this.setData({
       index:this.data.index+1
-    })
-    console.log("index in checkyes:",this.data.index)
+    });
+    if(this.data.index>=this.data.num){
+      wx.navigateTo({
+        url: '../endPage/endPage',
+      })
+    };
+
     this.changeText();
     var rightNum = getApp().globalData.rightNum;
     rightNum = rightNum + 1;
@@ -2259,6 +2261,8 @@ Page({
     })
   },
   checkNO: function () {
+    let errorword=this.data.text[this.data.RandomArray[this.data.index]];
+    this.addErrorWordToCloud(errorword.english,errorword.chinese);
     wx.showModal({
       cancelText: '我玩够了',
       confirmText: '好的',
@@ -2288,7 +2292,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    wx.cloud.init({
+      env: 'cloud1-9g3cfsud0e4d1f22' // 你的云开发环境ID
+    })
     this.getIndex();
     this.RandomGenerate();
     this.changeText();
@@ -2297,9 +2303,25 @@ Page({
     })
     this.setData({
       wrongNum: getApp().globalData.wrongNum
+    });
+    
+  },
+  addErrorWordToCloud: function(word, meaning) {
+    wx.cloud.callFunction({
+      name: 'addErrorWordToCloud',
+      data: {
+        word: word,
+        meaning: meaning
+      },
+      success: res => {
+        console.log('错误单词已添加到云数据库')
+      },
+      fail: err => {
+        console.error('添加错误单词到云数据库失败：', err)
+      }
     })
   },
-
+    
   select1() {
     if (0 == this.data.answer) {
       this.checkYES();
