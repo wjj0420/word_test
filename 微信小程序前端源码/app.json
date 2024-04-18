@@ -10,10 +10,11 @@
     "pages/book4/book4",
     "pages/choose/choose",
     "pages/endPage/endPage",
-    "pages/chaxun/chaxun",
-    "pages/rank/rank",
+    "pages/errorWords/errorWords",
     "pages/study/study",
-    "pages/study_choose/study_choose"
+    "pages/study_choose/study_choose",
+    "pages/errorCheck/errorCheck",
+    "pages/errorTest/errorTest"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -43,17 +44,12 @@
         "selectedIconPath": "img/study_s.png"
       },
       {
-        "pagePath": "pages/chaxun/chaxun",
-        "text": "历史",
+        "pagePath": "pages/errorWords/errorWords",
+        "text": "错题",
         "iconPath": "img/query.png",
         "selectedIconPath": "img/query_s.png"
-      },
-      {
-        "pagePath": "pages/rank/rank",
-        "text": "排行",
-        "iconPath": "img/rank.png",
-        "selectedIconPath": "img/rank_s.png"
       }
+      
      
     ]
   }

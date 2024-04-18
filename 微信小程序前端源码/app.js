@@ -5,12 +5,15 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    console.log(getCurrentPages())
+    wx.cloud.init({
+      env: 'cloud1-9g3cfsud0e4d1f22' // 你的云开发环境ID
+    });
+    //console.log(getCurrentPages())
     wx.login({
       success:function(res){
         wx.getUserInfo({
           success:function(res){
-            console.log(res)
+            //console.log(res)
           }
         })
       }

@@ -1,0 +1,7 @@
+<!--pages/errorCheck/errorCheck.wxml-->
+<view>
+    <block wx:for="{{ errorWords }}" wx:key="index">
+        <view>{{ item.word }}:{{ item.meaning }}</view> <!-- 假设错题对象中有一个 question 字段，用于存储题目内容 -->
+        <!-- 其他需要显示的错题信息 -->
+    </block>
+</view>

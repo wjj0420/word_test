@@ -84,7 +84,6 @@ Page({
 
   onShow: function(){
     var lujing = ""
-    console.log(app.globalData.nowBook)
     switch (app.globalData.nowBook) {
       case 0:
         lujing = '../study/study';

@@ -1,0 +1,17 @@
+<!--pages/errorTest/errorTest.wxml-->
+<view class="container">
+  <text class="question">"{{dataobj[index].meaning}}""{{index}}"这个单词的英文是：\n</text>
+  <text>\n\n</text> 
+  <button bindtap="select1" type="primary">{{cnindex0}}A:{{dataobj[cnindex0].word}}</button>
+  <text>\n</text> 
+  <button bindtap="select2" type="primary">{{cnindex1}}B:{{dataobj[cnindex1].word}}</button>
+  <text>\n</text> 
+  <button bindtap="select3" type="primary">{{cnindex2}}C:{{dataobj[cnindex2].word}}</button>
+  <text>\n</text> 
+  <button bindtap="select4" type="primary">{{cnindex3}}D:{{dataobj[cnindex3].word}}</button>
+  <text>\n</text> 
+  <button bindtap="change" type="primary" plain="true">换一个 </button>
+  <text>\n</text> 
+  <button bindtap="tiaozhuan" type="primary">进入错词本 </button>
+
+</view>

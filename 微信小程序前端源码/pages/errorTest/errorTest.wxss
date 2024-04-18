@@ -1,0 +1,5 @@
+/* pages/errorTest/errorTest.wxss */
+.question{
+  margin-bottom: 120px;
+  
+}
