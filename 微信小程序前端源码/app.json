@@ -14,7 +14,8 @@
     "pages/study/study",
     "pages/study_choose/study_choose",
     "pages/errorCheck/errorCheck",
-    "pages/errorTest/errorTest"
+    "pages/errorTest/errorTest",
+    "pages/user/user"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -31,6 +32,7 @@
         "iconPath": "img/index.png",
         "selectedIconPath": "img/index_s.png"
       },
+      
       {
         "pagePath": "pages/choose/choose",
         "text": "测试",
@@ -48,6 +50,12 @@
         "text": "错题",
         "iconPath": "img/query.png",
         "selectedIconPath": "img/query_s.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "个人",
+        "iconPath": "img/usercenter.png",
+        "selectedIconPath": "img/usercenter-active.png"
       }
       
      

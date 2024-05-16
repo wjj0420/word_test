@@ -1,0 +1,6 @@
+<block wx:if="{{ !openId }}">
+        <view class="username" bind:tap="getOpenId">请点击登录</view>
+      </block>
+      <block wx:else>
+        <view class="username">openId: {{ openId }}</view>
+      </block>

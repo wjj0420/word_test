@@ -2494,7 +2494,7 @@ Page({
   },
   checkNO: function () {
     let errorword=this.data.text[this.data.RandomArray[this.data.index]];
-    this.addErrorWordToCloud(errorword.english,errorword.chinese);
+    this.addErrorWordToCloud(errorword.english,errorword.chinese,getApp().globalData.openid);
     wx.showModal({
       cancelText: '我玩够了',
       confirmText: '好的',
@@ -2539,12 +2539,15 @@ Page({
     
   },
   //调用云函数，将错题记录上传云数据库
-  addErrorWordToCloud: function(word, meaning) {
+  addErrorWordToCloud: function(word, meaning,openid) {
+    console.log(openid)
     wx.cloud.callFunction({
       name: 'addErrorWordToCloud',
       data: {
         word: word,
-        meaning: meaning
+        meaning: meaning,
+        openid:openid
+        
       },
       success: res => {
         console.log('错误单词已添加到云数据库')

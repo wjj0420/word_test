@@ -43,7 +43,8 @@ App({
     rightNum: 0,
     wrongNum: 0,
     bookUnit: [],
-    nowBook:0//当前是哪本书
+    nowBook:0,//当前是哪本书
+    openid:0
   },
 
   

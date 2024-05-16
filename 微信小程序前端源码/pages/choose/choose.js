@@ -53,19 +53,12 @@ Page({
     app.globalData.bookUnit = checkedValues;
   },
 
-
-
-
-
-
-
   tiaozhuan: function () {
     wx.redirectTo({
       url: this.data.lujing,
     })
   },
   
-
   //事件处理函数
   bindViewTap: function () {
     //wx.navigateTo({

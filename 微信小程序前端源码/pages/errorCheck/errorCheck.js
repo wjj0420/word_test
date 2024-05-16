@@ -5,11 +5,14 @@ Page({
   },
   onLoad: function(options) {
     
-    this.getWrongQuestions(); // 页面加载时调用获取错题列表的方法
+    this.getWrongQuestions(getApp().globalData.openid); // 页面加载时调用获取错题列表的方法
   },
-  getWrongQuestions: function() {
+  getWrongQuestions: function(openid) {
     wx.cloud.callFunction({
       name: 'getErrorWords',
+      data: {
+        openid: openid
+      },
       success: res => {
         console.log('获取错题列表成功', res);
         this.setData({
@@ -20,5 +23,6 @@ Page({
         console.error('获取错题列表失败', err);
       }
     });
+   
   }
 });

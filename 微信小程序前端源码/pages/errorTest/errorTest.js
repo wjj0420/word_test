@@ -124,10 +124,6 @@ changeText: function () {
     fail: console.error
   });
     },
-    
-
-
-
   
   checkNO: function () {
     const that =this
@@ -161,11 +157,11 @@ changeText: function () {
       }
     })
   },
-  tiaozhuan: function () {
-
-    wx.redirectTo({
-      url: "../errorWords/errorWords",
-    })
+  tiaozhuan:function() {
+  console.log("1111")
+  wx.redirectTo({
+    url: '../errorWords/errorWords',
+  })
   },
   change: function () {
 

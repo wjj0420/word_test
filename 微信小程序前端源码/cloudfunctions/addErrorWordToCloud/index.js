@@ -5,7 +5,7 @@ cloud.init({
 const db = cloud.database()
 
 exports.main = async (event, context) => {
-  const { word, meaning } = event
+  const {word,meaning,openid}=event
   try {
     // 查询数据库中是否已存在该单词
     const queryResult = await db.collection('words').where({
@@ -17,7 +17,8 @@ exports.main = async (event, context) => {
         data: {
           word: word,
           meaning: meaning,
-          errorCount: 1 // 错误次数初始为1
+          errorCount: 1 ,// 错误次数初始为1
+          openid:openid
         }
       })
     } else {

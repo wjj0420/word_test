@@ -12,6 +12,6 @@
   <text>\n</text> 
   <button bindtap="change" type="primary" plain="true">换一个 </button>
   <text>\n</text> 
-  <button bindtap="tiaozhuan" type="primary">进入错词本 </button>
+  <button bindtap="tiaozhuan" type="primary">返回 </button>
 
 </view>
