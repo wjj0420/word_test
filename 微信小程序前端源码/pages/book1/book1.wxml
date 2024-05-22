@@ -1,15 +1,36 @@
 <!--test.wxml-->
 <view class="container">
-  <view class="question">"{{text[RandomArray[index]].english}}"这个单词的意思是：</view>
+  
+  <view class="question">"{{text[RandomArray[index]].english}}"这个单词对应的选项是：</view>
   <text>\n\n\n</text>
-  <button bindtap="select1" type="primary">A:{{text[cnindex0].chinese}}</button>
+  <block wx:if="{{ choose_mode==1 }}">
+  <view class="rounded-border">
+  <button bindtap="select1" class="primary1">A:{{text[cnindex0].chinese}}</button>
   <text>\n</text> 
-  <button bindtap="select2" type="primary">B:{{text[cnindex1].chinese}}</button>
+  <button bindtap="select2" class="primary1">B:{{text[cnindex1].chinese}}</button>
   <text>\n</text> 
-  <button bindtap="select3" type="primary">C:{{text[cnindex2].chinese}}</button>
+  <button bindtap="select3" class="primary1">C:{{text[cnindex2].chinese}}</button>
   <text>\n</text> 
-  <button bindtap="select4" type="primary">D:{{text[cnindex3].chinese}}</button>
-  <text>\n</text> 
+  <button bindtap="select4" class="primary1">D:{{text[cnindex3].chinese}}</button>
+</view>
+  </block>
+  <block wx:else>
+    <view class="image-container" bindtap="select1">
+    <view class="image-wrapper">
+        <image src="{{imageUrl_0}}" mode="aspectFill"></image>
+    </view>
+    <view class="image-wrapper" bindtap="select2">
+        <image src="{{imageUrl_1}}" mode="aspectFill"></image>
+    </view>
+    <view class="image-wrapper" bindtap="select3">
+        <image src="{{imageUrl_2}}" mode="aspectFill"></image>
+    </view>
+    <view class="image-wrapper" bindtap="select4">
+        <image src="{{imageUrl_3}}" mode="aspectFill"></image>
+    </view>
+</view>
+      </block>
+
   <text  >目前你答对了{{rightNum}}个,答错了{{wrongNum}}个\n</text>
   <button bindtap="select_over" class="btn-end">结束测试</button>
 </view>

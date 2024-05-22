@@ -1,180 +1,142 @@
-// pages/errorTest/errorTest.js
+
 const db=wx.cloud.database()
 const _ = db.command;            // 获取数据库命令对象的引用
-
-
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    dataobj:[
-
-    ],
-    num: 441,
-    index: 1,
-    answer: 1,
-    cnindex0: 1,
-    cnindex1: 1,
-    cnindex2: 1,
-    cnindex3: 1,
-    count:0,
-    
+  data:{
+    index:0,    //单词列表索引
+    error_num:0   ,//错题数
+    dataobj:[],   //错误单词列表
+    cnindex0:0,
+    cnindex1:0,
+    cnindex2:0,
+    cnindex3:0,
   },
-  getdata: function() {
+
+  onLoad: function () {
+    this.getWrongQuestions(getApp().globalData.openid);
+  },
+
+  getWrongQuestions: function(openid) {
     wx.cloud.callFunction({
       name: 'getErrorWords',
+      data: {
+        openid: openid
+      },
       success: res => {
         console.log('获取错题列表成功', res);
         this.setData({
-          dataobj:res.result // 将获取到的错题列表数据存储到页面数据中
+          error_num:res.result.length,
+          dataobj: res.result, //获取的列表
         });
+        this.changeText();
       },
       fail: err => {
         console.error('获取错题列表失败', err);
       }
     });
+   
   },
-  
-  // 在changeText函数之后定义checkyes函数
-checkYES: function () {
-  const that =this
-  db.collection('words').where({
-    word:that.data.dataobj[that.data.index].word
-  }).get({
-      success: function(res) {
-        console.log('get 成功，该单词为',that.data.dataobj[that.data.index])
-        if (res.data[0].errorCount == 0) {
-          console.log('该单词wrong=0')
-            db.collection('words').where({
-              word:that.data.dataobj[that.data.index].word
-          }).remove({
-            success: function() {
-              console.log('已删除')
-              this.changeText();
-            }
-          });
-          }else{}
-        that.setData({
-          now:res.data
-          
-        })
-        //console.log("now",that.data.now[0])
+
+  //页面更新
+  changeText: function () {  
+    var wordArray = new Array(this.data.error_num)
+      .fill(0)
+      .map((v, i) => i )
+      .sort(() => 0.5 - Math.random())
+      .filter((v, i) => i < 5);
+      console.log(this.data.error_num)
+    this.setData({
+      index: wordArray[0]
+    }),
+      this.setData({
+        answer: ((Math.ceil((Math.random() * 100) * 100)) % 4),
+      })
+      this.setData({
+        cnindex0: 0 == this.data.answer ? this.data.index : wordArray[1]
+      })
+      this.setData({
+        cnindex1: 1 == this.data.answer ? this.data.index : wordArray[2]
+      })
+      this.setData({
+        cnindex2: 2 == this.data.answer ? this.data.index : wordArray[3]
+      })
+      this.setData({
+        cnindex3: 3 == this.data.answer ? this.data.index : wordArray[4]
+      })
+  },
+  removeWord:function(id){
+    wx.cloud.callFunction({
+      name: 'removeWord',
+      data: {
+        id: id
+      },
+      success: res => {
+        console.log('调用removeWord成功', res);
+      },
+      fail: err => {
+        console.error('调用removeWord失败', err);
       }
     })
-  db.collection('words').where({
-    word:that.data.dataobj[that.data.index].word
-  }).update({
-    data:{
-      errorCount:_.inc(-1)
-    },
-    success:function(){
-      console.log("答对，wrong-1");
-    },
-    fail:console.error
-  });
+  },
 
-
-  this.changeText();
-},
-
-changeText: function () {
-  let that = this; // 将this保存在变量中以确保在回调函数中可以访问到
-  
-  const db = wx.cloud.database();
-  db.collection('words').count({
-    success: function(res) {
-      console.log("错题本单词数", res.total);
-      //当错题本单词数小于四时需要debug
-      let count = res.total; // 保存 count 的值
-      that.setData({
-        count: count // 更新count的值
+  //选择正确
+  checkYES: function () { 
+    var word_info=this.data.dataobj[this.data.index]
+    if(word_info.errorCount>1){
+      db.collection('words').where({
+        word:this.data.dataobj[this.data.index].english,
+        openid:getApp().globalData.openid
+      }).update({
+        data:{
+          data: {
+            errorCount: word_info.errorCount - 1
+          }
+        },
+        success:function(){
+          console.log("单词错误次数-1");
+        },
+        fail:console.error
       });
-      console.log("count数", that.data.count);
+    }
+    else{
+        
+        this.removeWord(word_info._id)
+        console.log(word_info._id)
 
-      // 随机生成索引值
-      let index = (Math.ceil((Math.random() * 100)) % count);
-      
-      // 保存 answer 的值
-      let answer = (Math.ceil((Math.random() * 100)) % 4);
+    }
+       
+    this.changeText();
+   
+  },
 
-      // 生成四个不同的随机数
-      let randomIndexes = [];
-      while (randomIndexes.length < 4) {
-        let randomIndex = (that.data.index + Math.ceil(Math.random() * 100)) % count;
-        if (!randomIndexes.includes(randomIndex)) {
-          randomIndexes.push(randomIndex);
-        }
-      }
-
-      // 分别设置cnindex0到cnindex3
-      that.setData({
-        index: index,
-        answer: answer,
-        cnindex0: 0 == answer ? index : randomIndexes[0],
-        cnindex1: 1 == answer ? index : randomIndexes[1],
-        cnindex2: 2 == answer ? index : randomIndexes[2],
-        cnindex3: 3 == answer ? index : randomIndexes[3]
-      });
-
-      console.log("index is", that.data.index);
-      console.log("cnindex0 is", that.data);
-    },
-    fail: console.error
-  });
-    },
-  
+  //选择错误
   checkNO: function () {
-    const that =this
-    console.log("nodata",that.data.dataobj[that.data.index].word)
-    //尝试在update中添加if判断wrong是否大于0，解决inc（）未识别的bug，同时
-    //解决第二次答错才执行update的问题(疑似已解决)
-            db.collection('words').where({
-              word:that.data.dataobj[that.data.index].word
-            }).update({
-              data:{
-                errorCount:_.inc(1)
-              },
-              success:function(){
-                console.log("单词已存在，wrong+1");
-              },
-              fail:console.error
-            });
-          
-    
+    db.collection('words').where({
+      word:this.data.dataobj[this.data.index].english,
+      openid:getApp().globalData.openid
+    }).update({
+      data:{
+        errorCount:_.inc(1)
+      },
+      success:function(){
+        console.log("单词错误次数+1");
+      },
+      fail:console.error
+    });
     wx.showModal({
       cancelText: '我玩够了',
       confirmText: '好的',
       title: '回答错误',
       content: '要不要再想想？',
-      success: function (res) {
+      success: function (res) {        
         if (res.cancel) {
-            wx.redirectTo({
-              url: '../index/index',
-            })
+          wx.navigateTo({
+            url: '../endPage/endPage',
+          })
         }
       }
     })
   },
-  tiaozhuan:function() {
-  console.log("1111")
-  wx.redirectTo({
-    url: '../errorWords/errorWords',
-  })
-  },
-  change: function () {
-
-    this.changeText();
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.getdata()
-    this.changeText()
-  },
-
   select1() {
     if (0 == this.data.answer) {
       this.checkYES();
@@ -207,6 +169,13 @@ changeText: function () {
       this.checkNO();
     }
   },
+  return() {
+    wx.redirectTo({
+      url: '../endPage/endPage',
+    })
+  },
 
-  
+
+
+
 })

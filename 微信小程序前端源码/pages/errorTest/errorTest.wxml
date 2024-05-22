@@ -10,8 +10,6 @@
   <text>\n</text> 
   <button bindtap="select4" type="primary">{{cnindex3}}D:{{dataobj[cnindex3].word}}</button>
   <text>\n</text> 
-  <button bindtap="change" type="primary" plain="true">换一个 </button>
-  <text>\n</text> 
-  <button bindtap="tiaozhuan" type="primary">返回 </button>
+  <button bindtap="return" type="primary">返回 </button>
 
 </view>
