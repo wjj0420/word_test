@@ -39,6 +39,7 @@ Page({
      
       
   },
+  
   onUnload: function () {
     console.log(app.globalData.openid )
   },

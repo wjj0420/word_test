@@ -1,5 +1,7 @@
 <!--index.wxml-->
-<view class="container">
+<view class="page_container">
+  <view class="top_bg" />
+<view class="main_content">
   <view  bindtap="bindViewTap" class="userinfo">
     <image class="userinfo-avatar" src="/img/1.jpg" background-size="cover"></image>
     <text class="userinfo-nickname">北邮英语学习互动平台</text>
@@ -18,8 +20,9 @@
             <text>{{item.text}}</text>
         </view>
     </view>
+    
   <text>\n\n\n\n\n\n\n\n</text>
-  <button bindtap="tiaozhuan1" type="primary"> 看词识意 </button>
-  <button bindtap="tiaozhuan2" type="primary"> 看词选图 </button>
+  <button bindtap="tiaozhuan1" class="btn"> 识词知义 </button><button bindtap="tiaozhuan2" class="btn"> 看词选图</button>
+</view>
 </view>
  

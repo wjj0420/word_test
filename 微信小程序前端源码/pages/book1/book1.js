@@ -25,10 +25,7 @@ Page({
     imageUrl_3: 0 ,//图片地址
     fileID:'',//云数据库的图片id
     text: [
-      {
-        english: "style",
-        chinese: " n.行为方式,风格 "
-      }],
+      ],
     text1: [ {
         english: "off and on",
         chinese: "断断续续地，有时",
@@ -2002,18 +1999,6 @@ Page({
     }
 
   },
-
-  //产生随机索引序列RandomArray(全局变量)
-  RandomGenerate:function (){
-    var wordArray = new Array(this.data.num)
-      .fill(0)
-      .map((v, i) => i )
-      .sort(() => (0.5 - Math.random()));
-      this.setData({
-        RandomArray:wordArray
-      });
-  },
-
   //通过单词获取其对应图片的url
   getURL: function(word) {
     wx.showLoading({
@@ -2063,71 +2048,65 @@ Page({
 
   //页面渲染（包括初始化和每一次选对后）
   changeText: function () {
-    //console.log(index),
-    let wordArray=this.data.RandomArray.slice()
+    var wordArray = new Array(this.data.num)
+      .fill(0)
+      .map((v, i) => i )
+      .sort(() => 0.5 - Math.random())
+      .filter((v, i) => i < 5);
+    this.setData({
+      index: wordArray[0]
+    }),
       this.setData({
-        answer: Math.floor(Math.random() * 4)
-      }),
-      wordArray.filter((v,i)=>v !=this.data.RandomArray[this.data.index]);//排除答案的索引序列
-      wordArray.sort(() => (0.5 - Math.random()))
-      .filter((v,i)=>i<4)
-      console.log("答案所在选项：",this.data.answer)
-      
-      var cnindex0= 0 == this.data.answer ? this.data.RandomArray[this.data.index] : wordArray[0];
-      var cnindex1= 1 == this.data.answer ? this.data.RandomArray[this.data.index] : wordArray[1];
-      var cnindex2= 2 == this.data.answer ? this.data.RandomArray[this.data.index] : wordArray[2];
-      var cnindex3= 3 == this.data.answer ? this.data.RandomArray[this.data.index] : wordArray[3];
-        console.log(this.text)
-      this.getURL(this.data.text[cnindex0].english).then(tempFileURL => {
+        answer: ((Math.ceil((Math.random() * 100) * 100)) % 4),
+      })
+      this.setData({
+        cnindex0: 0 == this.data.answer ? this.data.index : wordArray[1]
+      })
+      this.setData({
+        cnindex1: 1 == this.data.answer ? this.data.index : wordArray[2]
+      })
+      this.setData({
+        cnindex2: 2 == this.data.answer ? this.data.index : wordArray[3]
+      })
+      this.setData({
+        cnindex3: 3 == this.data.answer ? this.data.index : wordArray[4]
+      })
+      console.log("答案:",this.data.answer,"A:",this.data.cnindex0,"B:",this.data.cnindex1,"C:",this.data.cnindex2,"D:",this.data.cnindex3)
+      this.getURL(this.data.text[this.data.cnindex0].english).then(tempFileURL => {
         this.setData({
-          cnindex0: cnindex0,
           imageUrl_0:tempFileURL
         })
         })
       .catch(error => {
       console.error(error);
       });
-      this.getURL(this.data.text[cnindex1].english).then(tempFileURL => {
+      this.getURL(this.data.text[this.data.cnindex1].english).then(tempFileURL => {
         this.setData({
-          cnindex1: cnindex1,
           imageUrl_1:tempFileURL
         })
         })
       .catch(error => {
       console.error(error);
       });
-      this.getURL(this.data.text[cnindex2].english).then(tempFileURL => {
+      this.getURL(this.data.text[this.data.cnindex2].english).then(tempFileURL => {
         this.setData({
-          cnindex2: cnindex2,
           imageUrl_2:tempFileURL
         })
         })
       .catch(error => {
       console.error(error);
       });
-      this.getURL(this.data.text[cnindex3].english).then(tempFileURL => {
+      this.getURL(this.data.text[this.data.cnindex3].english).then(tempFileURL => {
         this.setData({
-          cnindex3: cnindex3,
           imageUrl_3:tempFileURL
         })
         })
       .catch(error => {
       console.error(error);
       });
-
-
     },
 
   checkYES: function () {
-    this.setData({
-      index:this.data.index+1
-    });
-    if(this.data.index>=this.data.num){
-      wx.navigateTo({
-        url: '../endPage/endPage',
-      })
-    };
-
     this.changeText();
     var rightNum = getApp().globalData.rightNum;
     rightNum = rightNum + 1;
@@ -2140,7 +2119,7 @@ Page({
     })
   },
   checkNO: function () {
-    let errorword=this.data.text[this.data.RandomArray[this.data.index]];
+    let errorword=this.data.text[this.data.index];
     this.addErrorWordToCloud(errorword.english,errorword.chinese,getApp().globalData.openid);
     wx.showModal({
       cancelText: '我玩够了',
@@ -2177,7 +2156,6 @@ Page({
       choose_mode:data
     })
     this.getIndex();
-    this.RandomGenerate();
     this.changeText();
     this.setData({
       rightNum: getApp().globalData.rightNum

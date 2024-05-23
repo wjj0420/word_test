@@ -1,7 +1,7 @@
 <!--test.wxml-->
 <view class="container">
   
-  <view class="question">"{{text[RandomArray[index]].english}}"这个单词对应的选项是：</view>
+  <view class="question">"{{text[index].english}}"这个单词对应的选项是：</view>
   <text>\n\n\n</text>
   <block wx:if="{{ choose_mode==1 }}">
   <view class="rounded-border">
@@ -15,21 +15,21 @@
 </view>
   </block>
   <block wx:else>
-    <view class="image-container" bindtap="select1">
+    <view class="image-container">
     <view class="image-wrapper">
-        <image src="{{imageUrl_0}}" mode="aspectFill"></image>
+        <image src="{{imageUrl_0}}" mode="aspectFill" bindtap="select1"></image>
     </view>
-    <view class="image-wrapper" bindtap="select2">
-        <image src="{{imageUrl_1}}" mode="aspectFill"></image>
+    <view class="image-wrapper">
+        <image src="{{imageUrl_1}}" mode="aspectFill" bindtap="select2"></image>
     </view>
-    <view class="image-wrapper" bindtap="select3">
-        <image src="{{imageUrl_2}}" mode="aspectFill"></image>
+    <view class="image-wrapper">
+        <image src="{{imageUrl_2}}" mode="aspectFill" bindtap="select3"></image>
     </view>
-    <view class="image-wrapper" bindtap="select4">
-        <image src="{{imageUrl_3}}" mode="aspectFill"></image>
+    <view class="image-wrapper" >
+        <image src="{{imageUrl_3}}" mode="aspectFill" bindtap="select4"></image>
     </view>
 </view>
-      </block>
+  </block>
 
   <text  >目前你答对了{{rightNum}}个,答错了{{wrongNum}}个\n</text>
   <button bindtap="select_over" class="btn-end">结束测试</button>

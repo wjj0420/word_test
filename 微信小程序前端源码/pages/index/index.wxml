@@ -1,15 +1,21 @@
 <!--index.wxml-->
-<view class="container">
-  <view  class="userinfo">
-    <image class="userinfo-avatar" src="/img/1.jpg" background-size="cover"></image>
+<view class="page_container">
+  <view class="top_bg" />
+<view class="main_content" style="position: relative; left: 0rpx; top: -200rpx">
+  <view  class="userinfo" style="position: relative; left: 0rpx; top: -59rpx">
+    <image class="userinfo-avatar" src="../../img/1.jpg" background-size="cover"></image>
     <view class="userinfo-nickname">北邮英语学习互动平台</view>
-    
+    <view class="container">
+    <!-- 使用button标签作为登录按钮 -->
+    <button class="login-button" bindtap="handleLogin">登录</button>
+    </view>
   </view>
-  <scroll-view class="scroll" scroll-x bindscroll="changeBook">
+  <scroll-view class="scroll" scroll-x bindscroll="changeBook" hidden="{{hideScrollView}}">
     <view class="scroll-item" wx:for="{{book}}" wx:key="{{index}}" >
       <image  src="{{item.src}}" class="si-img {{index==nowBook?'si-img-select':''}}" ></image>
       <view class="si-content" wx:if="{{index==nowBook}}">{{item.content}}</view>
-      <view class="si-ready" wx:if="{{index==nowBook}}" bindtap="selectBook">确定</view>
+      <view class="si-ready" wx:if="{{index==nowBook}}" bindtap="selectBook"style="color: #fff;">确定</view>
     </view>
   </scroll-view>
+</view>
 </view>
