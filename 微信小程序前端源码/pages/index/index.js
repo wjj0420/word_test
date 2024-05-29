@@ -3,6 +3,7 @@
 var app = getApp()
 Page({
   data: {
+    hideScrollView: true ,
     userInfo: {},
     areaIndex: 0,
     area: ['Book 1', 'Book 2', 'Book 3', 'Book 4'],
@@ -23,34 +24,51 @@ Page({
       content: "book4"
     }]
   }, 
-  // tiaozhuan: function (e) {
-  //   wx.redirectTo({
-  //     url: '../choose/choose',
-  //   }),
-  //     this.setData({
-  //       areaIndex: e.detail.value
-  //     })
-  // },
-  // tiaozhuan2: function (e) {
-  //   wx.redirectTo({
-  //     url: '../chaxun/chaxun',
-  //   }),
-  //     this.setData({
-  //       areaIndex: e.detail.value
-  //     })
-  // },
-  // bindPickerChange: function (e) {
-  //   this.setData({
-  //     areaIndex: e.detail.value
-  //   })
-  // },
-  // bindPickerChange2: function (e2) {
-  //   this.setData({
-  //     areaIndex2: e2.detail.value
-  //   })
-  // },
-  
-  //事件处理函数
+  getOpenId() {
+    wx.showLoading({
+      title: '',
+    });
+    wx.cloud
+      .callFunction({
+        name: 'getOpenid',
+        data: {
+          type: 'getOpenId',
+        },
+      })
+      .then((resp) => {
+        this.setData({
+          haveGetOpenId: true,
+          openId: resp.result.openid,
+        });
+        wx.hideLoading();
+        app.globalData.openid=resp.result.openid
+      })
+      .catch((e) => {
+        this.setData({
+          showUploadTip: true,
+        });
+        wx.hideLoading();
+      });
+     
+      
+  },
+  handleLogin() {
+    // 模拟登录操作，假设登录成功后延时2秒隐藏tabbar和scroll-view
+    wx.showLoading({
+      title: '正在登录...',
+    });
+    // 模拟登录操作，假设登录成功后延时2秒隐藏tabbar和scroll-view
+    this.getOpenId()
+    setTimeout(() => {
+      wx.hideLoading();
+      // 模拟登录成功
+      this.setData({
+        hideScrollView: false
+      });
+      // 登录成功后隐藏tabbar
+      wx.showTabBar();
+    }, 500);
+  },
   
   onLoad: function () {
     var that = this
@@ -62,7 +80,7 @@ Page({
         nowBook: app.globalData.nowBook,
       })
     })
-    
+    wx.hideTabBar();
   },
 
   //更改书的函数

@@ -1,5 +1,6 @@
 {
   "description": "项目配置文件。",
+  "cloudfunctionRoot": "cloudfunctions/",
   "setting": {
     "urlCheck": true,
     "es6": true,
@@ -14,7 +15,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "3.3.4",
-  "appid": "wx146f866447e0eed3",
+  "appid": "wx3a65469be76ba75a",
   "projectname": "english",
   "condition": {},
   "packOptions": {
@@ -24,5 +25,6 @@
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
-  }
+  },
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/"
 }

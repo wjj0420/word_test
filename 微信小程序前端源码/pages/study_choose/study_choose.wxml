@@ -1,0 +1,27 @@
+<view class="page_container">
+  <view class="top_bg" />
+<view class="main_content">
+<view class="container">
+  <view  bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="/img/1.jpg" background-size="cover"></image>
+    <text class="userinfo-nickname">北邮英语学习互动平台</text>
+  </view>
+  <text >\n</text>
+
+  <view class="picker" > 
+    选择范围：{{area[areaIndex]}}  
+  </view> 
+
+  
+   <!-- CheckboxGroup容器 -->
+    <view class="lxCheckboxGroup">
+        <view wx:for="{{items}}" data-index="{{index}}" size="20" bindtap="bindCheckbox">
+            <icon type="{{item.type}}" size="20"/>
+            <text>{{item.text}}</text>
+        </view>
+    </view>
+  <text>\n\n\n\n\n\n\n\n</text>
+  <button bindtap="tiaozhuan"class="btn"> 开始学习 </button>
+</view>
+</view>
+</view>

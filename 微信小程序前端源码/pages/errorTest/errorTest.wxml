@@ -1,0 +1,19 @@
+<!--pages/errorTest/errorTest.wxml-->
+<view class="page_container">
+  <view class="top_bg" />
+<view class="main_content">
+<view class="container">
+  <text class="question">"{{dataobj[index].meaning}}"这个单词的英文是：\n</text>
+  <text>\n\n</text> 
+  <button bindtap="select1" class="btn">A:{{dataobj[cnindex0].word}}</button>
+  <text>\n</text> 
+  <button bindtap="select2" class="btn">B:{{dataobj[cnindex1].word}}</button>
+  <text>\n</text> 
+  <button bindtap="select3"class="btn">C:{{dataobj[cnindex2].word}}</button>
+  <text>\n</text> 
+  <button bindtap="select4" class="btn">D:{{dataobj[cnindex3].word}}</button>
+  <text>\n</text> 
+  <button bindtap="return" class="btn">返回 </button>
+</view>
+</view>
+</view>

@@ -1,22 +1,23 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/test/test",
-    "pages/test2/yemian",
     "pages/book1/book1",
     "pages/book2/book2",
     "pages/book3/book3",
     "pages/book4/book4",
     "pages/choose/choose",
     "pages/endPage/endPage",
-    "pages/chaxun/chaxun",
-    "pages/rank/rank"
-    
+    "pages/errorWords/errorWords",
+    "pages/study/study",
+    "pages/study_choose/study_choose",
+    "pages/errorCheck/errorCheck",
+    "pages/errorTest/errorTest",
+    "pages/user/user",
+    "pages/history/history"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#e6f7ff",
     "navigationBarTitleText": "北邮英语测试平台",
     "navigationBarTextStyle": "black"
   },
@@ -29,6 +30,7 @@
         "iconPath": "img/index.png",
         "selectedIconPath": "img/index_s.png"
       },
+      
       {
         "pagePath": "pages/choose/choose",
         "text": "测试",
@@ -36,17 +38,25 @@
         "selectedIconPath": "img/test_s.png"
       },
       {
-        "pagePath": "pages/chaxun/chaxun",
-        "text": "历史",
+        "pagePath": "pages/study_choose/study_choose",
+        "text": "学习",
+        "iconPath": "img/study.png",
+        "selectedIconPath": "img/study_s.png"
+      },
+      {
+        "pagePath": "pages/errorWords/errorWords",
+        "text": "错题",
         "iconPath": "img/query.png",
         "selectedIconPath": "img/query_s.png"
       },
       {
-        "pagePath": "pages/rank/rank",
-        "text": "排行",
-        "iconPath": "img/rank.png",
-        "selectedIconPath": "img/rank_s.png"
+        "pagePath": "pages/user/user",
+        "text": "个人",
+        "iconPath": "img/usercenter.png",
+        "selectedIconPath": "img/usercenter-active.png"
       }
+      
+     
     ]
   }
 }

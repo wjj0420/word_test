@@ -5,12 +5,15 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    console.log(getCurrentPages())
+    wx.cloud.init({
+      env: 'cloud1-9g3cfsud0e4d1f22' // 你的云开发环境ID
+    });
+    //console.log(getCurrentPages())
     wx.login({
       success:function(res){
         wx.getUserInfo({
           success:function(res){
-            console.log(res)
+            //console.log(res)
           }
         })
       }
@@ -40,7 +43,8 @@ App({
     rightNum: 0,
     wrongNum: 0,
     bookUnit: [],
-    nowBook:0//当前是哪本书
+    nowBook:0,//当前是哪本书
+    openid:0
   },
 
   

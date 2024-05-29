@@ -17,56 +17,35 @@ Page({
       ID: e.detail.value
     })
   },
-
-  tiaozhuan: function () {
-
-    var rightNum = getApp().globalData.rightNum;
-    
-    var wrongNum = getApp().globalData.wrongNum;
-    var ceshi = this.data.ID;
-    if(ceshi==""){
-      wx.showModal({
-        cancelText: '不好',
-        confirmText: '好的',
-        title: '信息不完整',
-        content: '请输入您的学号',
-        success: function (res) {
-          if (res.cancel) {
-            wx.redirectTo({
-              url: '../index/index',
-            })
-          }
-        }
-      })
+  addTestInfo:function(rightNum,wrongNum,time,openid){
+  wx.cloud.callFunction({
+    name: 'addTestInfo',
+    data: {
+      rightNum:rightNum,
+      wrongNum: wrongNum,
+      time:time,
+      openid:openid
+    },
+    success: res => {
+      console.log('调用addTestInfo成功',openid)
+    },
+    fail: err => {
+      console.error('调用addTestInfo失败：', err)
     }
-    else{
-        wx.request({
-        url: 'https://www.sunyinan.top',
-        data: {
-          name: this.data.ID,
-          addr: rightNum,
-          addr2: wrongNum
-        },
-        method:'POST',
-        header: {
-          'content-Type': 'application/x-www-form-urlencoded'
-        },
-
-        success: function (res) {
-          console.log(res)
-        }
-      })
-        wx.switchTab({
-          url: '../index/index',
-        })
-      rightNum = 0;
-      getApp().globalData.rightNum = rightNum;
-      wrongNum = 0;
-      getApp().globalData.wrongNum = wrongNum;
-    }
-    
+  })
+ },
+  daka:function(){
+    var rightNum=this.data.rightNum;
+    var wrongNum=this.data.wrongNum;
+    var time=this.data.time;
+    var openid=getApp().globalData.openid;
+    this.addTestInfo(rightNum,wrongNum,time,openid);
+    wx.switchTab({
+      url: '../index/index',
+    })
   },
-  luguofun: function () {
+
+  return: function () {
 
     wx.switchTab({
       url: '../index/index',

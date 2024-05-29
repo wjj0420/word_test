@@ -1,0 +1,86 @@
+/**study.wxss**/
+.container {
+  margin:0 40rpx;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+
+
+
+    /*整个复选框组容器*/
+    .lxCheckboxGroup {
+        width: 80px;
+        height: 26px;
+        margin:20px auto;
+    }
+     
+    /*单个复选框容器*/
+    .lxCheckboxGroup view {
+        /*上下间距4px*/
+        margin: 4px auto;
+    }
+     
+    /*复选框图标*/
+    .lxCheckboxGroup icon {
+        /*text用block描述，所以要左浮动*/
+        float: left;
+    }
+     
+    /*文字标签样式*/
+    .lxCheckboxGroup text{
+        font-size: 14px;
+        /*20px是左按钮的大小，4px是真实的左间距*/
+        margin-left: 24px;
+        /*高亮与icon相等，实现垂直居中*/
+        height: 20px;
+        /*文本垂直居中*/
+        line-height: 20px;
+        /*块布局，否则文本高度无效*/
+        display: block;
+    }
+
+.picker {
+  text-align: center;
+}
+.page_container {
+  background-color: #dad0d0;
+  height: 100vh;
+  font-family: PingFang SC;
+}
+.main_content {
+  background-color: #fff;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  height: calc(100vh - 120rpx);
+  position: relative;
+}
+.top_bg {
+  height: 120rpx;
+}.btn {
+  background-color:  #dad0d0; /* 按钮背景色 */
+  color: rgb(66, 66, 66); /* 按钮文字颜色 */
+  border:1px solid rgb(107, 107, 107); /* 无边框 */
+  border-radius: 10px; /* 按钮圆角 */
+  padding: 5px 10px; /* 按钮内边距 */
+  text-align: center; /* 文字居中 */
+  font-size: 17px; /* 字体大小 */
+  width:100%; /* 按钮宽度，减去内边距的宽度 */
+  min-width:100%;
+  box-sizing: border-box; 
+  margin: 5px 0; /* 按钮之间的垂直间距 */
+}
+.btn:hover {
+  background-color: #9b9b9b; /* 悬停时按钮背景色 */
+}

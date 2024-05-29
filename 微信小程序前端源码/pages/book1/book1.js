@@ -9,7 +9,8 @@ Page({
 
   data: {
     num: 0,
-    index: 1,
+    index: 0,
+    RandomArray:[],
     answer: 1,
     rightNum: -1,
     wrongNum: -1,
@@ -17,14 +18,17 @@ Page({
     cnindex1: 1,
     cnindex2: 1,
     cnindex3: 1,
+    choose_mode:0,
+    imageUrl_0: 0 ,//选项A图片地址
+    imageUrl_1: 0 ,//图片地址
+    imageUrl_2: 0 ,//图片地址
+    imageUrl_3: 0 ,//图片地址
+    fileID:'',//云数据库的图片id
     text: [
-      {
-        english: "style",
-        chinese: " n.行为方式,风格 "
-      }],
+      ],
     text1: [ {
         english: "off and on",
-        chinese: "断断续续地，有时"
+        chinese: "断断续续地，有时",
       },
       {
         english: "take hold",
@@ -43,7 +47,7 @@ Page({
         chinese: "编写，制作"
       },
       {
-        english: "paragraph ",
+        english: "paragraph",
         chinese: "段落"
       },
       {
@@ -58,218 +62,12 @@ Page({
         english: "cheerless",
         chinese: "阴郁的，沉闷的"
       },
-      {
-        english: "tedious",
-        chinese: "乏味的，冗长的"
-      },
+     
       {
         english: "reputation",
         chinese: "名声，名誉"
       },
-      {
-        english: "inability",
-        chinese: "无能，无力"
-      },
-      {
-        english: "inspire",
-        chinese: "激励，鼓舞"
-      },
-      {
-        english: "formal",
-        chinese: "刻板的，拘谨的，正式的，正规的"
-      },
-      {
-        english: "rigid",
-        chinese: "一成不变的，严格的"
-      },
-      {
-        english: "out of date",
-        chinese: "过时的"
-      },
-      {
-        english: "excessively",
-        chinese: "过分地"
-      },
-      {
-        english: "prim",
-        chinese: "古板的，拘谨的，循规蹈矩的，整洁的"
-      },
-      {
-        english: "severe",
-        chinese: "朴素的，严重的，剧烈的"
-      },
-      {
-        english: "wavy",
-        chinese: "波形的，波浪形的"
-      },
-      {
-        english: "necktie",
-        chinese: "领带"
-      },
-      {
-        english: "pointed",
-        chinese: "有尖的，尖的"
-      },
-      {
-        english: "jaw",
-        chinese: "颌，颚"
-      },
-      {
-        english: "comic",
-        chinese: "滑稽的，喜剧的，连环漫画（册）"
-      },
-      {
-        english: "antique",
-        chinese: "古物，古玩"
-      },
-      {
-        english: "tackle",
-        chinese: "处理，应付"
-      },
-      {
-        english: "informal",
-        chinese: "（指讲话，文字）口语体的，非正式的"
-      },
-      {
-        english: "essay",
-        chinese: "散文，小品文，论说文"
-      },
-      {
-        english: "distribute",
-        chinese: "分发，分配，分送"
-      },
-      {
-        english: "finally",
-        chinese: "最终，终于"
-      },
-      {
-        english: "face up to",
-        chinese: "勇敢地接受或对付"
-      },
-      {
-        english: "scan",
-        chinese: "浏览，粗略地看"
-      },
-      {
-        english: "spaghetti",
-        chinese: "意大利式细面条"
-      },
-      {
-        english: "title",
-        chinese: "标题，题目，给...加标题，加题目于"
-      },
-      {
-        english: "extraordinary",
-        chinese: "不同寻常的，奇特的"
-      },
-      {
-        english: "sequence",
-        chinese: "一连串相关的事物，次序，顺序"
-      },
-      {
-        english: "image",
-        chinese: "形象，印象，（图）像"
-      },
-      {
-        english: "vivid",
-        chinese: "生动的，逼真的"
-      },
-      {
-        english: "adult",
-        chinese: "成年人，成年动物"
-      },
-      {
-        english: "recall",
-        chinese: "回想起，回忆起"
-      },
-      {
-        english: "social",
-        chinese: "社会的，社交的，交谊的"
-      },
-      {
-        english: "respectable",
-        chinese: "可敬的，体面的，文雅的"
-      },
-      {
-        english: "put down",
-        chinese: "写下"
-      },
-      {
-        english: "recapture",
-        chinese: "再现，再次经历"
-      },
-      {
-        english: "relive",
-        chinese: "再体验，重温"
-      },
-      {
-        english: "violate",
-        chinese: "违背，违反"
-      },
-      {
-        english: "compose",
-        chinese: "创作"
-      },
-      {
-        english: "turn in",
-        chinese: "交（作业）"
-      },
-      {
-        english: "command",
-        chinese: "命令，指令"
-      },
-      {
-        english: "discipline",
-        chinese: "惩罚，处分，纪律"
-      },
-      {
-        english: "what’s more",
-        chinese: "而且，此外，更有甚者"
-      },
-      {
-        english: "contempt",
-        chinese: "轻视，轻蔑"
-      },
-      {
-        english: "ridicule",
-        chinese: "嘲笑，嘲弄，被戏弄"
-      },
-      {
-        english: "open-hearted",
-        chinese: "诚挚的"
-      },
-      {
-        english: "enjoyment",
-        chinese: "愉快，欢乐，满意"
-      },
-      {
-        english: "hold back",
-        chinese: "控制（感情，眼泪等）"
-      },
-      {
-        english: "avoid",
-        chinese: "避免"
-      },
-      {
-        english: "demonstration",
-        chinese: "表明，证明"
-      },
-      {
-        english: "calling",
-        chinese: "职业，使命"
-      },
-      {
-        english: "career",
-        chinese: "生涯，事业，职业"
-      },
-      {
-        english: "seal",
-        chinese: "印章，图章"
-      },
-      {
-        english: "essence",
-        chinese: "本质，精髓"
-      },
+      
     ],
     text2: [
       {
@@ -2076,7 +1874,7 @@ Page({
       chinese: "懦夫"
     },
 ],
-    num1: 62,
+    num1: 10,
     num2: 43,
     num3: 79,
     num4: 72,
@@ -2094,7 +1892,8 @@ Page({
     }
     return 0;
   },
-
+  
+//获取测试组库text和测试词库的数量num
   getIndex: function () {
     var num = 0;
     var index = getApp().globalData.bookUnit;
@@ -2200,45 +1999,131 @@ Page({
     }
 
   },
+  //通过单词获取其对应图片的url
+  getURL: function(word) {
+    wx.showLoading({
+      title: '',
+    });
+    return new Promise((resolve, reject) => {
+      wx.cloud.callFunction({
+        name: 'getFileID',
+        data: {
+          word: word,
+        },
+        success: res => {
+          console.log('调用getFileID成功', res)
+          wx.hideLoading();
+          // 在成功回调中再执行获取临时文件 URL 的操作
+          this.getTempFileURL(res.result[0].img_url)
+            .then(tempFileURL => {
+              resolve(tempFileURL);
+            })
+            .catch(error => {
+              reject(error);
+            });
+        },
+        fail: err => {
+          console.error('调用getFileID失败：', err);
+          reject(err);
+        }
+      });
+    });
+    
+  },
+  getTempFileURL: function(fileID) {
+    return new Promise((resolve, reject) => {
+      wx.cloud.getTempFileURL({
+        fileList: [fileID],
+        success: res => {
+          console.log(res.fileList[0].tempFileURL);
+          resolve(res.fileList[0].tempFileURL);
+        },
+        fail: error => {
+          console.error(error);
+          reject(error);
+        }
+      });
+    });
+  },
+
+  //页面渲染（包括初始化和每一次选对后）
   changeText: function () {
-    // this.data.text = 'changed data'  // bad, it can not work
     var wordArray = new Array(this.data.num)
       .fill(0)
-      .map((v, i) => i + 1)
+      .map((v, i) => i )
       .sort(() => 0.5 - Math.random())
       .filter((v, i) => i < 5);
+      //（产生一个从0到num-1（词库单词数-1）的随机排列，取前5个）
     this.setData({
-      index: wordArray[0]
+      index: wordArray[0]  //index为答案对应的索引
     }),
       this.setData({
-        answer: ((Math.ceil((Math.random() * 100) * 100)) % 4)
-      }),
+        answer: ((Math.ceil((Math.random() * 100) * 100)) % 4),   //answer为0-3的随机数，代表答案所在选项（0代表A，1代表B，2代表C，3代表D）
+      })
+
+      //给每个选项赋一个索引值，用来访问单词列表
       this.setData({
         cnindex0: 0 == this.data.answer ? this.data.index : wordArray[1]
-      }),
+      })
       this.setData({
         cnindex1: 1 == this.data.answer ? this.data.index : wordArray[2]
-      }),
+      })
       this.setData({
         cnindex2: 2 == this.data.answer ? this.data.index : wordArray[3]
-      }),
+      })
       this.setData({
         cnindex3: 3 == this.data.answer ? this.data.index : wordArray[4]
       })
-  },
+      console.log("答案:",this.data.answer,"A:",this.data.cnindex0,"B:",this.data.cnindex1,"C:",this.data.cnindex2,"D:",this.data.cnindex3)
+      this.getURL(this.data.text[this.data.cnindex0].english).then(tempFileURL => {
+        this.setData({
+          imageUrl_0:tempFileURL
+        })
+        })
+      .catch(error => {
+      console.error(error);
+      });
+      this.getURL(this.data.text[this.data.cnindex1].english).then(tempFileURL => {
+        this.setData({
+          imageUrl_1:tempFileURL
+        })
+        })
+      .catch(error => {
+      console.error(error);
+      });
+      this.getURL(this.data.text[this.data.cnindex2].english).then(tempFileURL => {
+        this.setData({
+          imageUrl_2:tempFileURL
+        })
+        })
+      .catch(error => {
+      console.error(error);
+      });
+      this.getURL(this.data.text[this.data.cnindex3].english).then(tempFileURL => {
+        this.setData({
+          imageUrl_3:tempFileURL
+        })
+        })
+      .catch(error => {
+      console.error(error);
+      });
+    },
+
   checkYES: function () {
     this.changeText();
     var rightNum = getApp().globalData.rightNum;
     rightNum = rightNum + 1;
     getApp().globalData.rightNum = rightNum;
     this.setData({
-      rightNum: getApp().globalData.rightNum
+      rightNum: getApp().globalData.rightNum,
     })
     this.setData({
       wrongNum: getApp().globalData.wrongNum
     })
   },
   checkNO: function () {
+    let errorword=this.data.text[this.data.index];
+    this.addErrorWordToCloud(errorword.english,errorword.chinese,getApp().globalData.openid);
     wx.showModal({
       cancelText: '我玩够了',
       confirmText: '好的',
@@ -2252,6 +2137,7 @@ Page({
         }
       }
     })
+    
     var wrongNum = getApp().globalData.wrongNum;
     wrongNum = wrongNum + 1;
     getApp().globalData.wrongNum = wrongNum;
@@ -2267,7 +2153,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.changeText();
+    var data = options.data;
+    console.log(data);
+    this.setData({
+      choose_mode:data
+    })
     this.getIndex();
     this.changeText();
     this.setData({
@@ -2275,40 +2165,68 @@ Page({
     })
     this.setData({
       wrongNum: getApp().globalData.wrongNum
+    });
+    
+  },
+  //调用云函数，将错题记录上传云数据库
+  addErrorWordToCloud: function(word, meaning,openid) {
+    console.log(openid)
+    wx.cloud.callFunction({
+      name: 'addErrorWordToCloud',
+      data: {
+        word: word,
+        meaning: meaning,
+        openid:openid
+        
+      },
+      success: res => {
+        console.log('错误单词已添加到云数据库',openid)
+      },
+      fail: err => {
+        console.error('添加错误单词到云数据库失败：', err)
+      }
     })
   },
-
+    
   select1() {
+    
     if (0 == this.data.answer) {
       this.checkYES();
     }
     else {
       this.checkNO();
     }
+   
   },
   select2() {
+   
     if (1 == this.data.answer) {
       this.checkYES();
     }
     else {
       this.checkNO();
     }
+    
   },
   select3() {
+    
     if (2 == this.data.answer) {
       this.checkYES();
     }
     else {
       this.checkNO();
     }
+   
   },
   select4() {
+    
     if (3 == this.data.answer) {
       this.checkYES();
     }
     else {
       this.checkNO();
     }
+    
   },
   select_over() {
     wx.redirectTo({
@@ -2316,53 +2234,4 @@ Page({
     })
   },
 
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

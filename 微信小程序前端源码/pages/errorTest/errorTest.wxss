@@ -1,0 +1,35 @@
+/* pages/errorTest/errorTest.wxss */
+.question{
+  margin-bottom: 120px;
+  
+}
+.page_container {
+  background-color: #dad0d0;
+  height: 100vh;
+  font-family: PingFang SC;
+}
+.main_content {
+  background-color: #fff;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  height: calc(100vh - 120rpx);
+  position: relative;
+}
+.top_bg {
+  height: 120rpx;
+}.btn {
+  background-color:  #dad0d0; /* 按钮背景色 */
+  color: rgb(66, 66, 66); /* 按钮文字颜色 */
+  border:1px solid rgb(107, 107, 107); /* 无边框 */
+  border-radius: 10px; /* 按钮圆角 */
+  padding: 5px 10px; /* 按钮内边距 */
+  text-align: center; /* 文字居中 */
+  font-size: 17px; /* 字体大小 */
+  width:100%; /* 按钮宽度，减去内边距的宽度 */
+  min-width:100%;
+  box-sizing: border-box; 
+  margin: 5px 0; /* 按钮之间的垂直间距 */
+}
+.btn:hover {
+  background-color: #9b9b9b; /* 悬停时按钮背景色 */
+}

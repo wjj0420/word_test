@@ -16,3 +16,35 @@
 .btn-end {
   margin-top:20rpx;
 }
+.rounded-border {
+  width: 300px;
+  height: 300px;
+  border: rpx solid #000;
+  border-radius: 20rpx; /* 设置10像素的圆角 */
+  
+}
+.primary1{
+  color: #1ccdd3;
+  text-align: left;
+  font-size:small
+}
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  width: 600rpx; /* 小程序中的像素单位 */
+  height: 600rpx;
+  border: 1rpx solid #ccc; /* 可选：添加边框 */
+}
+
+.image-wrapper {
+  width: 48%; /* 每个图片容器的宽度 */
+  height: 48%; /* 每个图片容器的高度 */
+  margin-bottom: 2%; /* 控制图片容器之间的间距 */
+}
+
+.image-wrapper image {
+  width: 100%; /* 图片宽度填满容器 */
+  height: 100%; /* 图片高度填满容器 */
+}

@@ -1,0 +1,17 @@
+<!--pages/study/study.wxml-->
+<view class="page_container">
+  <button class="back-button" bindtap="goBack"><text  decode='true'  >&lt;</text></button>
+  <view class="top_bg" />
+<view class="main_content">
+<view>
+  <text>\n</text> 
+  <text class="question">"{{text[Index].english}}"\n这个单词的意思是：{{text[Index].chinese}}"</text>
+  <image  src="{{imageUrl}}" background-size="cover"></image>
+  <view class="play_button" bindtap="playAudio">
+  <image class="play_icon" src="/img/play_icon.png"></image>
+</view>
+<button class="btn" bindtap="previous">上一个</button>
+<button class="btn" bindtap="next">下一个</button>
+</view>
+</view>
+</view>

@@ -2062,45 +2062,66 @@ Page({
     }
 
   },
-  changeText: function () {
-    // this.data.text = 'changed data'  // bad, it can not work
+  //产生随机索引序列RandomArray(全局变量)
+  RandomGenerate:function (){
     var wordArray = new Array(this.data.num)
       .fill(0)
-      .map((v, i) => i + 1)
-      .sort(() => 0.5 - Math.random())
-      .filter((v, i) => i < 5);
-    this.setData({
-      index: wordArray[0]
-    }),
+      .map((v, i) => i )
+      .sort(() => (0.5 - Math.random()));
       this.setData({
-        answer: ((Math.ceil((Math.random() * 100) * 100)) % 4)
+        RandomArray:wordArray
+      });
+  },
+
+  //页面渲染（包括初始化和每一次选对后）
+  changeText: function () {
+    //console.log(index),
+    let wordArray=this.data.RandomArray.slice()
+      this.setData({
+        answer: Math.floor(Math.random() * 4)
+      }),
+      wordArray.filter((v,i)=>v !=this.data.RandomArray[this.data.index]);//排除答案的索引序列
+      wordArray.sort(() => (0.5 - Math.random()))
+      .filter((v,i)=>i<4)
+      console.log("答案所在选项：",this.data.answer)
+      this.setData({
+        cnindex0: 0 == this.data.answer ? this.data.RandomArray[this.data.index] : wordArray[0]
       }),
       this.setData({
-        cnindex0: 0 == this.data.answer ? this.data.index : wordArray[1]
+        cnindex1: 1 == this.data.answer ? this.data.RandomArray[this.data.index] : wordArray[1]
       }),
       this.setData({
-        cnindex1: 1 == this.data.answer ? this.data.index : wordArray[2]
+        cnindex2: 2 == this.data.answer ? this.data.RandomArray[this.data.index] : wordArray[2]
       }),
       this.setData({
-        cnindex2: 2 == this.data.answer ? this.data.index : wordArray[3]
-      }),
-      this.setData({
-        cnindex3: 3 == this.data.answer ? this.data.index : wordArray[4]
+        cnindex3: 3 == this.data.answer ? this.data.RandomArray[this.data.index] : wordArray[3]
       })
   },
+
   checkYES: function () {
+    this.setData({
+      index:this.data.index+1
+    });
+    if(this.data.index>=this.data.num){
+      wx.navigateTo({
+        url: '../endPage/endPage',
+      })
+    };
+
     this.changeText();
     var rightNum = getApp().globalData.rightNum;
     rightNum = rightNum + 1;
     getApp().globalData.rightNum = rightNum;
     this.setData({
-      rightNum: getApp().globalData.rightNum
+      rightNum: getApp().globalData.rightNum,
     })
     this.setData({
       wrongNum: getApp().globalData.wrongNum
     })
   },
   checkNO: function () {
+    let errorword=this.data.text[this.data.RandomArray[this.data.index]];
+    this.addErrorWordToCloud(errorword.english,errorword.chinese,getApp().globalData.openid);
     wx.showModal({
       cancelText: '我玩够了',
       confirmText: '好的',
@@ -2108,12 +2129,13 @@ Page({
       content: '要不要再想想？',
       success: function (res) {
         if (res.cancel) {
-          wx.redirectTo({
+          wx.navigateTo({
             url: '../endPage/endPage',
           })
         }
       }
     })
+    
     var wrongNum = getApp().globalData.wrongNum;
     wrongNum = wrongNum + 1;
     getApp().globalData.wrongNum = wrongNum;
@@ -2129,17 +2151,40 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.changeText();
+    wx.cloud.init({
+      env: 'cloud1-9g3cfsud0e4d1f22' // 你的云开发环境ID
+    })
     this.getIndex();
+    this.RandomGenerate();
     this.changeText();
     this.setData({
       rightNum: getApp().globalData.rightNum
     })
     this.setData({
       wrongNum: getApp().globalData.wrongNum
+    });
+    
+  },
+  //调用云函数，将错题记录上传云数据库
+  addErrorWordToCloud: function(word, meaning,openid) {
+    console.log(openid)
+    wx.cloud.callFunction({
+      name: 'addErrorWordToCloud',
+      data: {
+        word: word,
+        meaning: meaning,
+        openid:openid
+        
+      },
+      success: res => {
+        console.log('错误单词已添加到云数据库')
+      },
+      fail: err => {
+        console.error('添加错误单词到云数据库失败：', err)
+      }
     })
   },
-
+    
   select1() {
     if (0 == this.data.answer) {
       this.checkYES();
@@ -2172,58 +2217,9 @@ Page({
       this.checkNO();
     }
   },
-
   select_over() {
     wx.redirectTo({
       url: '../endPage/endPage',
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

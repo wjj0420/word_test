@@ -1,0 +1,44 @@
+/* pages/errorCheck/errorCheck.wxss */
+.page_container {
+  background-color: #dad0d0;
+  height: 100vh;
+  font-family: PingFang SC;
+}
+.main_content {
+  background-color: #fff;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  height: calc(100vh - 120rpx);
+  
+  position: relative;
+  display: flex;
+  justify-content: center; /* 水平居中 */
+}
+.top_bg {
+  height: 120rpx;
+}
+.back-button {
+  position: absolute;
+  top: 10rpx;
+  left: 10rpx;
+  width: 60rpx; /* 按钮的宽度和高度设置为相同 */
+  height: 60rpx;
+  background-color: #b8b8b8; /* 按钮背景色 */
+  color: rgb(110, 110, 110); /* 按钮文字颜色 */
+  border: none;
+  border-radius: 50%; /* 圆形按钮 */
+  font-size: 40rpx; /* 字体大小 */
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  z-index: 1000; /* 确保按钮在最上层 */
+  font-family: Arial Black, sans-serif;
+  font-weight: 2000; 
+}
+.error-item {
+  background-color: #f5f5f5; /* 设置背景色 */
+  padding: 10rpx; /* 添加内边距 */
+  margin-bottom: 5rpx; /* 添加底部外边距 */
+  border: 1rpx solid #ccc; /* 添加边框 */
+  border-radius: 5rpx; /* 圆角边框 */
+}

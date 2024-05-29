@@ -1,6 +1,23 @@
 /**index.wxss**/
 .container {
-  margin:0 40rpx;
+  margin:40rpx;
+}
+.page_container {
+  background-color: #dad0d0;
+  height: 100vh;
+  font-family: PingFang SC;
+}
+
+.top_bg {
+  height: 120rpx;
+}
+
+.main_content {
+  background-color: #fff;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  height: calc(100vh - 120rpx);
+  position: relative;
 }
 
 .userinfo {
@@ -58,7 +75,7 @@
   width:100rpx;
   left:198rpx;
   top:553rpx;
-  background:green;
+  background:#dad0d0;
   border-radius: 50rpx;
   color:#000;
   line-height: 100rpx;
