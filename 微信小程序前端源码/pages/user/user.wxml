@@ -1,6 +1,17 @@
-<block wx:if="{{ !openId }}">
-        <view class="username" bind:tap="getOpenId">请点击登录</view>
-      </block>
-      <block wx:else>
-        <view class="username">openId: {{ openId }}</view>
-      </block>
+<!-- pages/me/index.wxml -->
+<view class="page_container">
+  <view class="top_bg" />
+  <view class="main_content">
+    <view class="userinfo_container">
+      <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+  <image class="avatar" src="{{avatarUrl}}"></image>
+</button> 
+<input type="nickname" class="weui-input" placeholder="请输入昵称"/>
+    </view>
+    <view class="settings_container">
+      <button bindtap="check">查看测试记录</button>
+     
+    </view>
+  </view>
+  <cloud-tip-modal showUploadTipProps="{{showUploadTip}}" />
+</view>

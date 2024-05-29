@@ -1,3 +1,6 @@
+<view class="page_container">
+  <view class="top_bg" />
+<view class="main_content">
 <view class="container">
   <view  bindtap="bindViewTap" class="userinfo">
     <image class="userinfo-avatar" src="/img/1.jpg" background-size="cover"></image>
@@ -18,5 +21,7 @@
         </view>
     </view>
   <text>\n\n\n\n\n\n\n\n</text>
-  <button bindtap="tiaozhuan" type="primary"> 开始学习 </button>
+  <button bindtap="tiaozhuan"class="btn"> 开始学习 </button>
+</view>
+</view>
 </view>

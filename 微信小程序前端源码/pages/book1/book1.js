@@ -2053,12 +2053,15 @@ Page({
       .map((v, i) => i )
       .sort(() => 0.5 - Math.random())
       .filter((v, i) => i < 5);
+      //（产生一个从0到num-1（词库单词数-1）的随机排列，取前5个）
     this.setData({
-      index: wordArray[0]
+      index: wordArray[0]  //index为答案对应的索引
     }),
       this.setData({
-        answer: ((Math.ceil((Math.random() * 100) * 100)) % 4),
+        answer: ((Math.ceil((Math.random() * 100) * 100)) % 4),   //answer为0-3的随机数，代表答案所在选项（0代表A，1代表B，2代表C，3代表D）
       })
+
+      //给每个选项赋一个索引值，用来访问单词列表
       this.setData({
         cnindex0: 0 == this.data.answer ? this.data.index : wordArray[1]
       })
@@ -2177,7 +2180,7 @@ Page({
         
       },
       success: res => {
-        console.log('错误单词已添加到云数据库')
+        console.log('错误单词已添加到云数据库',openid)
       },
       fail: err => {
         console.error('添加错误单词到云数据库失败：', err)

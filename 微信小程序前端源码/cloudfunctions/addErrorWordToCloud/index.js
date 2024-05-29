@@ -9,7 +9,8 @@ exports.main = async (event, context) => {
   try {
     // 查询数据库中是否已存在该单词
     const queryResult = await db.collection('words').where({
-      word: word
+      word: word,
+      openid:openid
     }).get();
     if (queryResult.data.length === 0) {
       // 如果单词不存在，插入新记录

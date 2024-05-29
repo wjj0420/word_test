@@ -3,10 +3,6 @@
   <text >{{time}}\n\n</text>
   <text class="question">"你答对了{{rightNum}}个,答错了{{wrongNum}}个,正确率为：{{zql}}%"</text>
 
-  <input class="input" name="ID" placeholder="请输入您的学号"
-    bindinput ="IDInput"/>
-  <text>\n</text>
-  <button bindtap="tiaozhuan" type="primary"> 打卡 </button>
-  <text>\n</text>
-  <button bindtap="luguofun" type="primary"> 我只是路过 </button>
+  <button bindtap="daka" type="primary"> 打卡 </button>
+  <button bindtap="return" type="primary"> 我只是路过 </button>
 </view>

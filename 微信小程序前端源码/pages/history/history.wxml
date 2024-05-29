@@ -4,8 +4,8 @@
   <view class="top_bg" />
 <view class="main_content">
 <view>
-    <block wx:for="{{ errorWords }}" wx:key="index">
-        <view class="error-item">{{ item.word }}:{{ item.meaning }}</view> 
+    <block wx:for="{{ history }}" wx:key="index">
+        <view class="error-item">时间：{{ item.time }}，答对{{ item.rightNum }}题，答错{{ item.rightNum }}题</view> 
     </block>
   </view>
 </view>

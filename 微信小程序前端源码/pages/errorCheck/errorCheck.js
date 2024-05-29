@@ -24,5 +24,11 @@ Page({
       }
     });
    
-  }
+  },
+
+  goBack() {
+    wx.switchTab({
+      url: '../errorWords/errorWords',
+    }) 
+  },
 });

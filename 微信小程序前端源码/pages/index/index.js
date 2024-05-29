@@ -30,7 +30,7 @@ Page({
     });
     wx.cloud
       .callFunction({
-        name: 'quickstartFunctions',
+        name: 'getOpenid',
         data: {
           type: 'getOpenId',
         },

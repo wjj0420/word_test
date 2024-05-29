@@ -28,6 +28,24 @@ Page({
           error_num:res.result.length,
           dataobj: res.result, //获取的列表
         });
+
+        if (res.result.length < 5) {
+          wx.showModal({
+            title: '错词数量少于5，无法使用该功能',
+            content: '无敌是多么寂寞',
+            showCancel: false, // 是否显示取消按钮，设为 false 表示不显示
+            success(res) {
+              if (res.confirm) {
+                
+                wx.switchTab({
+                  url: '../errorWords/errorWords',
+                })
+              }
+            }
+          })
+        }
+
+
         this.changeText();
       },
       fail: err => {
@@ -108,8 +126,7 @@ Page({
     this.changeText();
    
   },
-
-  //选择错误
+    //选择错误
   checkNO: function () {
     db.collection('words').where({
       word:this.data.dataobj[this.data.index].english,
@@ -128,9 +145,9 @@ Page({
       confirmText: '好的',
       title: '回答错误',
       content: '要不要再想想？',
-      success: function (res) {        
+      success: function (res) {
         if (res.cancel) {
-          wx.navigateTo({
+          wx.redirectTo({
             url: '../endPage/endPage',
           })
         }
@@ -170,9 +187,9 @@ Page({
     }
   },
   return() {
-    wx.redirectTo({
-      url: '../endPage/endPage',
-    })
+    wx.switchTab({
+      url: '../errorWords/errorWords',
+    }) 
   },
 
 

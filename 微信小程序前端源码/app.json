@@ -1,9 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/test/test",
-    "pages/test2/yemian",
     "pages/book1/book1",
     "pages/book2/book2",
     "pages/book3/book3",
@@ -15,7 +12,8 @@
     "pages/study_choose/study_choose",
     "pages/errorCheck/errorCheck",
     "pages/errorTest/errorTest",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/history/history"
   ],
   "window": {
     "backgroundTextStyle": "light",

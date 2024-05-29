@@ -2065,13 +2065,14 @@ if (num == 0) {
 
   previous(){
     let newIndex = this.data.Index - 1;
-    if (Index < 0) {
-      newIndex = 0; 
+    if (newIndex < 0) {
+      newIndex = newIndex+1; 
       wx.showModal({
-        cancelText: '我玩够了',
+
         confirmText: '好的',
         title: '',
         content: '这是第一个',
+        showCancel: false, // 是否显示取消按钮，设为 false 表示不显示
         success: function (res) {
           
         }
@@ -2090,10 +2091,11 @@ if (num == 0) {
     if (nextIndex >= this.data.text.length) {
       nextIndex=nextIndex-1
       wx.showModal({
-        cancelText: '我玩够了',
+
         confirmText: '好的',
         title: '',
         content: '这是最后一个了',
+        showCancel: false, // 是否显示取消按钮，设为 false 表示不显示
         success: function (res) {
           
         }
@@ -2107,7 +2109,11 @@ if (num == 0) {
     this.data.innerAudioContext.stop() // 音频停止
       console.log("当前的索引值：",this.data.nextIndex)
   },
-
+  goBack() {
+    wx.switchTab({
+      url: '../study_choose/study_choose',
+    }) 
+  },
   
   onUnload: function(){
     this.data.innerAudioContext.destroy() // 释放音频资源

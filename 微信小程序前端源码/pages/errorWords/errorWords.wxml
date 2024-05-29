@@ -1,8 +1,13 @@
 <!--pages/chaxun/chaxun.wxml-->
-<view class="container">
-<view>
+<view class="page_container">
+  
+  <view class="top_bg" />
+<view class="main_content">
+<view class="content_wrapper">
   <image class="userinfo-avatar" src="/img/errorbook.jpg"></image>
-  <button bindtap="errorCheck" type="primary" class="btn-query"> 错题查询 </button>
-  <button bindtap="errorTest" type="primary" class="btn-query"> 错题测试 </button>
+  <button bindtap="errorCheck"class="btn"> 错题查询 </button>
+  <button bindtap="errorTest" class="btn"> 错题测试 </button>
 </view>
 </view>
+</view>
+

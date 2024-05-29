@@ -18,7 +18,7 @@
 }
 .rounded-border {
   width: 300px;
-  height: 400px;
+  height: 300px;
   border: rpx solid #000;
   border-radius: 20rpx; /* 设置10像素的圆角 */
   
@@ -33,8 +33,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-content: space-between;
-  width: 400rpx; /* 小程序中的像素单位 */
-  height: 400rpx;
+  width: 600rpx; /* 小程序中的像素单位 */
+  height: 600rpx;
   border: 1rpx solid #ccc; /* 可选：添加边框 */
 }
 
